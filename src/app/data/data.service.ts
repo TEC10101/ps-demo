@@ -14,6 +14,7 @@ export class DataService {
     return of(['Monthly', 'Annual', 'Lifetime']);
   }
   postUserSettingsForm(userSettings: IUserSettings): Observable<any> {
+    console.log('userSettings: ', userSettings);
     
     return this.http.post('https://putsreq.com/3BR2k1WjlxNu7tBus8YE', userSettings);
     

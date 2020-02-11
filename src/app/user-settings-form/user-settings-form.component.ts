@@ -17,6 +17,8 @@ export class UserSettingsFormComponent implements OnInit {
     subscriptionType: null,
     notes: null
   }
+  singleModel = "On";
+  startDate: Date;
 
   userSettings: IUserSettings = { ...this.originalUserSettings };
   postError = false;
@@ -30,6 +32,8 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscriptionTypes = this._dataSvc.getSubscriptionTypes();
+    this.startDate = new Date();
+    
   }
 
   onBlur(field: NgModel) {
@@ -45,14 +49,14 @@ export class UserSettingsFormComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log('in onSubmit ', form.valid)
 
-    if (form.valid) {
-      this._dataSvc.postUserSettingsForm(this.userSettings).subscribe(
-        result => console.log('success: ', result),
-        error => this.onHttpError(error)
-      )
-    } else {
-      this.postError = true;
-      this.postErrorMessage = 'Please fix the above errors'
-    }
+    // if (form.valid) {
+    //   this._dataSvc.postUserSettingsForm(this.userSettings).subscribe(
+    //     result => console.log('success: ', result),
+    //     error => this.onHttpError(error)
+    //   )
+    // } else {
+    //   this.postError = true;
+    //   this.postErrorMessage = 'Please fix the above errors'
+    // }
   }
 }

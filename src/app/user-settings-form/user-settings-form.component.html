@@ -10,6 +10,11 @@
                 [class.ax-field-error]="form.submitted && nameField.invalid" />
             <div class="alert alert-danger" [hidden]="!form.submitted || nameField.valid">Enter a name</div>
         </div>
+
+        <button type="button" class="btn btn-primary" [(ngModel)]="singleModel" name="singleModel" btnCheckbox
+            btnCheckboxTrue="On" btnCheckboxFalse="Off">
+            {{ singleModel }}
+        </button>
         <!-- debugging
         <h3>dirty: {{ propertyTest.dirty }}</h3>
         <h3>pristine: {{ propertyTest.pristine }}</h3>
@@ -17,6 +22,14 @@
         <h3>untouched: {{ propertyTest.untouched }}</h3>
         <h3>valid: {{ propertyTest.valid }}</h3>
         <h3>invalid: {{ propertyTest.invalid }}</h3> -->
+
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="text" name="startDate" id="startDate" class="form-control"
+            [(ngModel)]="startDate"
+            bsDatepicker>
+        </div>
+        Start Date: {{ startDate }}
 
         <div class="form-check form-group">
             <input type="checkbox" class="form-check-input" id="emailOffers" name="emailOffers"
@@ -27,7 +40,15 @@
         </div>
 
         <p>User Interface Style</p>
-        <div class="form-group">
+        <div class="btn-group">
+            <label class="btn btn-success" [(ngModel)]="userSettings.interfaceStyle" btnRadio="light" tabindex="0"
+                role="button" name="interfaceStyle">Light</label>
+            <label class="btn btn-warning" [(ngModel)]="userSettings.interfaceStyle" btnRadio="medium" tabindex="0"
+                role="button" name="interfaceStyle">Medium</label>
+            <label class="btn btn-danger" [(ngModel)]="userSettings.interfaceStyle" btnRadio="dark" tabindex="0"
+                role="button" name="interfaceStyle">Dark</label>
+        </div>
+        <!-- <div class="form-group">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="interfaceStyle" id="lightInterface" value="light"
                     checked [(ngModel)]="userSettings.interfaceStyle">
@@ -49,7 +70,7 @@
                     Dark
                 </label>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="subscriptionType">Subscription Type</label>
